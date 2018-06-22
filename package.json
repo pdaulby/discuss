@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/pdaulby/discuss/issues"
   },
-  "homepage": "https://github.com/pdaulby/discuss#readme"
+  "homepage": "https://github.com/pdaulby/discuss#readme",
+  "dependencies": {
+    "ramda": "^8.4.0"
+  }
 }
