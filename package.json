@@ -1,0 +1,24 @@
+{
+  "name": "discuss",
+  "version": "1.0.0",
+  "description": "Discussion and debate tools for the modern age ",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdaulby/discuss.git"
+  },
+  "keywords": [
+    "js",
+    "functional",
+    "debate"
+  ],
+  "author": "Paul Daulby",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pdaulby/discuss/issues"
+  },
+  "homepage": "https://github.com/pdaulby/discuss#readme"
+}

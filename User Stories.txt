@@ -1,0 +1,77 @@
+as a user i want to be able to 
+
+  make an initial statement
+  
+  make a counter point (to any point)
+  
+  accept an opposing point
+  
+  know who's winning a point in the argument, based on accepted points
+  
+  unaccept an opposing point 
+	must give a counterpoint when doing this
+  
+  provide evidence in support of a point
+  
+  explain why the evidence supports the point
+  
+  request evidence 
+	fulfil request
+  
+  criticize evidence
+  
+  see guidelines for criticizing evidence *
+    biased experiment (explain why)
+	biased experimenters 
+	not repeatable 
+	validity of evidence
+	alternate causes (correlation != causation)
+	lack of data points
+	
+  update/improve a point 
+  
+  view older versions of an updated point
+  
+  hide discussions about an older point
+	request the hiding of an outdated point
+	accept hiding request of an outdated point
+	decline hiding request
+		must give reason/counterpoint when declining
+  
+  make addition seperate 'initial statements' (alternate discussions)
+  
+  link alternate discussions as part of a counterpoint
+  
+  if same point arises, link to original, and update winner accordingly
+	request point linking
+	accept point linking
+	decline point linking
+		must give reason/counterpoint when declining
+		
+  mark something as matter of opinion 
+	request marking as opinion
+		must give opinion to do this
+	accept marking as opinion
+		must give opinion to do this 
+	grey out  lines based on opinion with lack of acceptances
+	still make counterpoints from an opinion
+	un accept something as opinion
+		may only be done with proper acceptances (not sure what that exactly means
+  
+  make counterpoint using logical fallacy
+	View logical fallacies when making counterpoint
+	select logical fallacy
+	explain why logical fallacy applies
+	
+  view list of cognitive biases (purely for reference, they're important to know about)
+  
+  view list of requests
+  
+  view list of unanswered points
+  
+  view all the points and counterpoints, and explore the argument
+  
+  save an argument
+	load an argument
+  
+  
