@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+const R = require('ramda');
 
 function Description(props) {
     return (<p className="description">{props.value}</p>);
@@ -16,7 +17,7 @@ function AddBtn(props) {
 
 function Point(props) {
     let renderDescription = ()=>(<Description value= {props.value} />);
-    let renderAddBtn = ()=>(<AddBtn onClick= {()=>(alert("not implemented"))} />);
+    let renderAddBtn = ()=>(<AddBtn onClick= {()=>(alert(props.value))} />);
 
     return (
         <div className="point">
@@ -26,14 +27,29 @@ function Point(props) {
     );
 }
 
-function All(props) {
-    let renderPoint = (value)=>(<Point value={value}/>);
+const renderPoint = (value) => (<Point value={value.description}/>);
+const renderAll = R.map(renderPoint);
+
+class All extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            points: [
+                {
+                    id: 0,
+                    description: "x gon give it to ya, something something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
+                    counterpoints: []
+                }
+            ]
+        }
+    }
+
+    render() {
     return (
         <div>
-        {renderPoint("x gon give it to ya, something something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj")}
-        {renderPoint("omething something sfaksd jflajsdf lakjs x gon givdje it to ya, something sdflaks jdflasd jflask lkdalkjalfdkj")}
+        {renderAll(this.state.points)}
         </div>
-    );
+    );}
 }
 
 ReactDOM.render(<All/>, document.getElementById("root"));
