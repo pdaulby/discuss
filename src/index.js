@@ -5,60 +5,62 @@ import './index.css';
 import {PointBox} from './pointBox';
 const R = require('ramda');
 
-const renderPointBox = (value) => (<PointBox description={value.description} onClick={()=>(alert('not implemented'))}/>);  
+const getCounterpoints = (point) => point.counterpoints;
+
+const renderPointBox = (point) => (<PointBox description={point.description} onClick={()=>(alert('not implemented'))}/>);  
 
 const renderPoint = function(point) {
     return(
         <div className="point">
             {renderPointBox(point)}
             <div className="counterPoint">
-                {R.map(renderPoint, point.counterpoints)}
+                {R.map(renderPoint, getCounterpoints(point))}
             </div>
         </div>
     )
 }
 
-const renderAll = R.map(renderPoint);  
-
 class All extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            points: [
-                {
-                    description: "x gon give it to ya, something something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
+            points:{
+                    description: "Discuss! press the + button to get started",
                     counterpoints: [
                         {
-                            description: "counter counter countersomething something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
+                            description: "first starting point something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
                             counterpoints: [
                                 {
-                                    description: "counter counter countersomething something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
+                                    description: "counterpoint something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
                                     counterpoints: []
                                 },
                                 {
-                                    description: "counter2 counter2 counter2something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
-                                    counterpoints: []
+                                    description: "counterpoint2 something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
+                                    counterpoints: [
+                                        {
+                                            description: "countercounterpoint something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
+                                            counterpoints: []
+                                        },
+                                        {
+                                            description: "countercounterpoint2 something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
+                                            counterpoints: []
+                                        },]
                                 },
                             ]
                         },
                         {
-                            description: "counter2 counter2 counter2something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
+                            description: "second starting point something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
                             counterpoints: []
                         },
                     ]
-                },
-                {
-                    description: "y gon give it to ya, something something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
-                    counterpoints: []
-                },
-            ]
+                }
         }
     }
 
     render() {
     return (
         <div>
-        {renderAll(this.state.points)}
+        {renderPoint(this.state.points)}
         </div>
     );}
 }
