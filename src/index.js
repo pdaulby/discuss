@@ -30,7 +30,16 @@ class All extends React.Component {
                     counterpoints: [
                         {
                             description: "counter counter countersomething something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
-                            counterpoints: []
+                            counterpoints: [
+                                {
+                                    description: "counter counter countersomething something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
+                                    counterpoints: []
+                                },
+                                {
+                                    description: "counter2 counter2 counter2something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
+                                    counterpoints: []
+                                },
+                            ]
                         },
                         {
                             description: "counter2 counter2 counter2something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
