@@ -14,6 +14,15 @@ test('addChildId adds chlid 25', () => {
       .toMatchObject([{id: 0, children: [1, 2]}, {id: 1, children: []}, {id: 2, children: []}]);
   });
 
+  test('addChild', () => {
+      let nodes = [{id: 0, children: [1, 2]}, {id: 1, children: []}, {id: 2, children: []}];
+      expect(treeArray.addChild(nodes, 2, {description: 'new'}))
+      .toMatchObject([{id: 0, children: [1, 2]}, {id: 1, children: []}, {id: 2, children: [3]}, {id: 3, children: [], description: 'new'}]);
+
+      expect(nodes)
+      .toMatchObject([{id: 0, children: [1, 2]}, {id: 1, children: []}, {id: 2, children: []}]);
+  });
+
   //test('values', () => {
       //expect(treeArray.toArray(2)).toMatchObject([2]);
   //})

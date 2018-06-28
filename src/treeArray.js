@@ -1,5 +1,5 @@
 const R = require('ramda');
-const push = R.curry((value, array)=> [...array, value]);
+const push = R.flip(R.concat);
 const toArray = R.curry((x)=>[x]);
 
 const emptyNode = (id) => ({
@@ -16,7 +16,7 @@ const getChildren = (node) => node.children;
 
 const getNode = R.curry((nodes, id) => nodes[id]);
 
-const addChildId = R.curry((childId, node) => Object.assign({}, node, {children: push(childId, getChildren(node))}));
+const addChildId = R.curry((childId, node) => Object.assign({}, node, {children: R.concat(getChildren(node), [childId])}));
 
 const addChildIdToParent = R.curry((parentId, childId, nodes) => R.adjust(addChildId(childId), parentId, nodes));
 
@@ -24,17 +24,16 @@ const addChildIdToParent = R.curry((parentId, childId, nodes) => R.adjust(addChi
 
 const addChild = function(nodes, parentId, childDetails) {
     let childId = R.length(nodes);
-    let childNode = createNode(childId, childDetails);
-
     let newNodes = addChildIdToParent(parentId, childId, nodes);
-    return push(childNode, newNodes);
+    return R.concat(newNodes, [createNode(childId, childDetails)]);
 }
 
-const addchildalt2 = (childId, parentId, childDetails) => R.pipe(
-    push(createNode(childId, childDetails),
-    addChildIdToParent(parentId, childId)));
+const addchildalt2 = (childId, parentId, childDetails) => 
+    R.pipe(
+        addChildIdToParent(parentId, childId),
+        push([createNode(childId, childDetails)]));
 
-const addchildalt = (nodes, parentId, childDetails) => addchildalt2(R.length(nodes), parentId, childDetails)(nodes);
+const addchildalt = (parentId, childDetails, nodes) => addchildalt2(R.length(nodes), parentId, childDetails)(nodes);
 
 
 
