@@ -11,7 +11,7 @@ const renderPointBox = (point, onClick) => (<PointBox description={point.descrip
 const renderPoint = R.curry(function(nodes, handleClick, point) {
     return(
         <div className="point">
-            {renderPointBox(point, ()=>handleClick(point, "testesstessst"))}
+            {renderPointBox(point, ()=>handleClick(point, prompt('Please type your counterpoint','')))}
             <div className="counterPoint">
                 {R.map(renderPoint(nodes, handleClick), Tree.getChildren(nodes, point))}
             </div>
@@ -23,10 +23,7 @@ class All extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            points: R.pipe(Tree.createInitial, 
-                Tree.addchildalt(0, {description: 'example counter'}), 
-                Tree.addchildalt(0, {description: 'example counter2'}))
-                ({description: 'Discuss! press the + button to get started'})
+            points: Tree.createInitial({description: 'Discuss! press the + button to get started'})
         }
     }
 
@@ -38,6 +35,7 @@ class All extends React.Component {
     );}
 
     handleClick(node, description) {
+        if (description == null || description == ''){ return; }
         let points = this.state.points;
         let newPoints = Tree.addChild(points, node.id, {description: description});
         this.setState({points: newPoints});
