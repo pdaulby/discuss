@@ -10,29 +10,32 @@ const getCounterpoints = Tree.getChildren;
 
 const renderPointBox = (point) => (<PointBox description={point.description} onClick={()=>(alert('not implemented'))}/>);  
 
-const renderPoint = function(point) {
+const renderPoint = R.curry(function(nodes, point) {
     return(
         <div className="point">
             {renderPointBox(point)}
             <div className="counterPoint">
-                {R.map(renderPoint, getCounterpoints(point))}
+                {R.map(renderPoint(nodes), Tree.getChildren(nodes, point))}
             </div>
         </div>
     )
-}
+});
 
 class All extends React.Component {
     constructor(props) {
         super(props);
+        let initial = Tree.createInitial({description: 'Discuss! press the + button to get started'});
+        let withChild = Tree.addChild(initial, 0, {description: 'example counter'});
+        let withChild2 = Tree.addChild(withChild, 0, {description: 'example counter2'});
         this.state = {
-            points: R.pipe(Tree.createInitial)({description: 'Discuss! press the + button to get started'})
+            points: withChild2
         }
     }
 
     render() {
     return (
         <div>
-        {renderPoint(Tree.getInitial(this.state.points))}
+        {renderPoint(this.state.points, Tree.getInitial(this.state.points))}
         </div>
     );}
 }

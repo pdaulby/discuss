@@ -31,16 +31,29 @@ test('addChildId adds chlid 25', () => {
 
   test('addChildalt', () => {
       let nodes = [{id: 0, children: [1, 2]}, {id: 1, children: []}, {id: 2, children: []}];
-      expect(treeArray.addchildalt(nodes, 2, {description: 'new'}))
+      expect(treeArray.addchildalt(2, {description: 'new'}, nodes))
       .toMatchObject([{id: 0, children: [1, 2]}, {id: 1, children: []}, {id: 2, children: [3]}, {id: 3, children: [], description: 'new'}]);
 
       expect(nodes)
       .toMatchObject([{id: 0, children: [1, 2]}, {id: 1, children: []}, {id: 2, children: []}]);
   });
 
-  test('getChildren of createInitial', () => {
+  test('getChildIds of createInitial', () => {
       let initialArray = treeArray.createInitial({});
-      expect(R.pipe(treeArray.getInitial, treeArray.getChildren)(initialArray)).toMatchObject([]);   
+      expect(R.pipe(treeArray.getInitial, treeArray.getChildIds)(initialArray)).toMatchObject([]);   
+  })
+
+  test('getChildren', () => {
+    let nodes = [{id: 0, children: [1, 2]}, {id: 1, children: []}, {id: 2, children: []}];
+    expect(treeArray.getChildren(nodes, nodes[0]))
+    .toMatchObject([{id: 1, children: []}, {id: 2, children: []}]);
+
+    expect(nodes)
+    .toMatchObject([{id: 0, children: [1, 2]}, {id: 1, children: []}, {id: 2, children: []}]);
+});
+
+  test('maptest', ()=> {
+     expect(R.map(R.add(1), [])).toMatchObject([]);
   })
 
   //test('values', () => {
