@@ -23,7 +23,7 @@ class All extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            points: Tree.createInitial({description: 'Discuss! press the + button to get started'})
+            points: Tree.createInitial({description: prompt('What is the question you wish to discuss', 'Discuss! press the + button to get started')})
         }
     }
 
