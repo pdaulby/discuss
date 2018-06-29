@@ -6,16 +6,14 @@ import {PointBox} from './pointBox';
 const Tree = require('../src/treeArray');
 const R = require('ramda');
 
-const getCounterpoints = Tree.getChildren;
+const renderPointBox = (point, onClick) => (<PointBox description={point.description} onClick={onClick}/>);  
 
-const renderPointBox = (point) => (<PointBox description={point.description} onClick={()=>(alert('not implemented'))}/>);  
-
-const renderPoint = R.curry(function(nodes, point) {
+const renderPoint = R.curry(function(nodes, handleClick, point) {
     return(
         <div className="point">
-            {renderPointBox(point)}
+            {renderPointBox(point, ()=>handleClick('not implementd'))}
             <div className="counterPoint">
-                {R.map(renderPoint(nodes), Tree.getChildren(nodes, point))}
+                {R.map(renderPoint(nodes, handleClick), Tree.getChildren(nodes, point))}
             </div>
         </div>
     )
@@ -24,20 +22,24 @@ const renderPoint = R.curry(function(nodes, point) {
 class All extends React.Component {
     constructor(props) {
         super(props);
-        let initial = Tree.createInitial({description: 'Discuss! press the + button to get started'});
-        let withChild = Tree.addChild(initial, 0, {description: 'example counter'});
-        let withChild2 = Tree.addChild(withChild, 0, {description: 'example counter2'});
         this.state = {
-            points: withChild2
+            points: R.pipe(Tree.createInitial, 
+                Tree.addchildalt(0, {description: 'example counter'}), 
+                Tree.addchildalt(0, {description: 'example counter2'}))
+                ({description: 'Discuss! press the + button to get started'})
         }
     }
 
     render() {
     return (
         <div>
-        {renderPoint(this.state.points, Tree.getInitial(this.state.points))}
+        {renderPoint(this.state.points, alert, Tree.getInitial(this.state.points))}
         </div>
     );}
+
+    handleClick(node, description) {
+        this.setState({})
+    }
 }
 
 ReactDOM.render(<All/>, document.getElementById("root"));
