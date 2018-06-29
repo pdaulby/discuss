@@ -1,4 +1,10 @@
 const treeArray = require('../src/treeArray');
+const R = require('ramda');
+
+test('createInitial', () =>{
+    expect(treeArray.createInitial({description: 'description'}))
+    .toMatchObject([{id:0, children:[], description:'description'}]);
+})
 
 test('addChildId adds chlid 25', () => {
     let node = {id: 21, description: 'lelele', children: [22, 23, 24]}
@@ -22,6 +28,20 @@ test('addChildId adds chlid 25', () => {
       expect(nodes)
       .toMatchObject([{id: 0, children: [1, 2]}, {id: 1, children: []}, {id: 2, children: []}]);
   });
+
+  test('addChildalt', () => {
+      let nodes = [{id: 0, children: [1, 2]}, {id: 1, children: []}, {id: 2, children: []}];
+      expect(treeArray.addchildalt(nodes, 2, {description: 'new'}))
+      .toMatchObject([{id: 0, children: [1, 2]}, {id: 1, children: []}, {id: 2, children: [3]}, {id: 3, children: [], description: 'new'}]);
+
+      expect(nodes)
+      .toMatchObject([{id: 0, children: [1, 2]}, {id: 1, children: []}, {id: 2, children: []}]);
+  });
+
+  test('getChildren of createInitial', () => {
+      let initialArray = treeArray.createInitial({});
+      expect(R.pipe(treeArray.getInitial, treeArray.getChildren)(initialArray)).toMatchObject([]);   
+  })
 
   //test('values', () => {
       //expect(treeArray.toArray(2)).toMatchObject([2]);

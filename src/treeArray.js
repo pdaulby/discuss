@@ -12,6 +12,8 @@ const createNode = R.curry((id, nodeDetails) =>
 
 const createInitial = R.pipe(createNode(0), toArray);
 
+const getInitial = (nodes) => nodes[0];
+
 const getChildren = (node) => node.children;
 
 const getNode = R.curry((nodes, id) => nodes[id]);
@@ -33,8 +35,8 @@ const addchildalt2 = (childId, parentId, childDetails) =>
         addChildIdToParent(parentId, childId),
         push([createNode(childId, childDetails)]));
 
-const addchildalt = (parentId, childDetails, nodes) => addchildalt2(R.length(nodes), parentId, childDetails)(nodes);
+const addchildalt = (nodes, parentId, childDetails) => addchildalt2(R.length(nodes), parentId, childDetails)(nodes);
 
 
 
-module.exports = {createInitial, getChildren, push, addChildId, addChildIdToParent, addChild, toArray}
+module.exports = {createInitial, getInitial, getChildren, addChildId, addChildIdToParent, addChild, addchildalt}

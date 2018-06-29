@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 import {PointBox} from './pointBox';
+const Tree = require('../src/treeArray');
 const R = require('ramda');
 
-const getCounterpoints = (point) => point.counterpoints;
+const getCounterpoints = Tree.getChildren;
 
 const renderPointBox = (point) => (<PointBox description={point.description} onClick={()=>(alert('not implemented'))}/>);  
 
@@ -24,43 +25,14 @@ class All extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            points:{
-                    description: "Discuss! press the + button to get started",
-                    counterpoints: [
-                        {
-                            description: "first starting point something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
-                            counterpoints: [
-                                {
-                                    description: "counterpoint something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
-                                    counterpoints: []
-                                },
-                                {
-                                    description: "counterpoint2 something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
-                                    counterpoints: [
-                                        {
-                                            description: "countercounterpoint something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
-                                            counterpoints: []
-                                        },
-                                        {
-                                            description: "countercounterpoint2 something something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
-                                            counterpoints: []
-                                        },]
-                                },
-                            ]
-                        },
-                        {
-                            description: "second starting point something sfaksd jflajsdf lakjsdflaks jdflasd jflask lkdalkjalfdkj",
-                            counterpoints: []
-                        },
-                    ]
-                }
+            points: R.pipe(Tree.createInitial)({description: 'Discuss! press the + button to get started'})
         }
     }
 
     render() {
     return (
         <div>
-        {renderPoint(this.state.points)}
+        {renderPoint(Tree.getInitial(this.state.points))}
         </div>
     );}
 }
