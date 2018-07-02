@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import PointBox from './components/pointBox';
+import PointBox from './components/points/pointBox';
 const Tree = require('../src/treeArray');
 const R = require('ramda');
 
@@ -43,4 +43,5 @@ class All extends React.Component {
     }
 }
 
+export default All;
 ReactDOM.render(<All/>, document.getElementById("root"));
