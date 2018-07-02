@@ -12,7 +12,7 @@ function AddBtn(props) {
       );
 }
 
-export function PointBox(props) {
+export default function PointBox(props) {
     let renderDescription = ()=>(<Description value= {props.description} />);
     let renderAddBtn = ()=>(<AddBtn onClick= {props.onClick} />);
 

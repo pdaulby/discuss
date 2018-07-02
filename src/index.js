@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import {PointBox} from './pointBox';
+import PointBox from './components/pointBox';
 const Tree = require('../src/treeArray');
 const R = require('ramda');
 
