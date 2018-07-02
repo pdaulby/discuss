@@ -1,5 +1,4 @@
 import React from 'react';
-
 import PointBox from './pointBox';
 const Tree = require('../../../src/treeArray');
 const R = require('ramda');
@@ -19,6 +18,7 @@ const renderPoint = R.curry(function(nodes, handleClick, point) {
 
 class Points extends React.Component {
     constructor(props) {
+        console.log('help');
         super(props);
         this.state = {
             points: Tree.createInitial({description: prompt('What is the question you wish to discuss', 'Discuss! press the + button to get started')})

@@ -1,5 +1,6 @@
 // app template for every page
-import React, {PropTypes} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
     render () {
@@ -12,8 +13,8 @@ class App extends React.Component {
     }
 }
 
-App.proptypes = {
-    children: PropTypes.object.isRequired
+App.propTypes = {
+    children: PropTypes.any.isRequired
 };
 
 export default App;

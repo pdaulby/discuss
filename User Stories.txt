@@ -1,3 +1,8 @@
+reselect for memoization 
+react > action > reducer > store > react-redux > react
+
+TODO add key to point
+
 as a user i want to be able to 
 
   make an initial statement
