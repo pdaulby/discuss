@@ -25,6 +25,7 @@ class All extends React.Component {
         this.state = {
             points: Tree.createInitial({description: prompt('What is the question you wish to discuss', 'Discuss! press the + button to get started')})
         }
+        this.handleClick = this.handleClick.bind(this);
     }
 
     render() {
@@ -35,7 +36,7 @@ class All extends React.Component {
     );}
 
     handleClick(node, description) {
-        if (description == null || description == ''){ return; }
+        if (description == null || description === ''){ return; }
         let points = this.state.points;
         let newPoints = Tree.addChild(points, node.id, {description: description});
         this.setState({points: newPoints});
