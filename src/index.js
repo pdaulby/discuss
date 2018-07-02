@@ -31,7 +31,7 @@ class All extends React.Component {
     render() {
     return (
         <div>
-        {renderPoint(this.state.points, (node, description)=>this.handleClick(node, description), Tree.getInitial(this.state.points))}
+        {renderPoint(this.state.points, this.handleClick, Tree.getInitial(this.state.points))}
         </div>
     );}
 
